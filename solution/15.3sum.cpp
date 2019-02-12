@@ -36,30 +36,34 @@ class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         sort(nums.begin(), nums.end());
-        vector<vector<int>> res;        
         auto len = nums.size();
+        vector<vector<int>> res;
 
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < len; i++)
+        {
             int target = -nums[i];
             int front = i + 1;
             int back = len - 1;
 
-            while(front < back){
+            while(front < back)
+            {
                 int sum = nums[front] + nums[back];
-                if(target > sum)
+
+                if(sum < target)
                     front++;
-                else if(target < sum)
+                else if(sum > target)
                     back--;
                 else{
                     vector<int> tmp(3, 0);
                     tmp[0] = nums[i];
                     tmp[1] = nums[front];
                     tmp[2] = nums[back];
+
                     res.push_back(tmp);
 
                     while(front < back && nums[front] == tmp[1])
                         front++;
-                    while(front < back && nums[back] == tmp[2])
+                    while(front < back && nums[front] == tmp[2])
                         back--;
                 }
                 while(i < len - 1 && nums[i+1] == nums[i])
