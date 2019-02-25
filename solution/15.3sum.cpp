@@ -66,9 +66,9 @@ public:
                     while(front < back && nums[front] == tmp[2])
                         back--;
                 }
-                while(i < len - 1 && nums[i+1] == nums[i])
-                    i++;
             }
+            while(i < len - 1 && nums[i+1] == nums[i])
+                i++;
         }
         return res;
     }
